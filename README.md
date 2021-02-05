@@ -1,6 +1,8 @@
 # Simple Task List
 `Vue`
 
+![alt text](todo.jpg)
+
 ## Project setup
 ```
 npm install
