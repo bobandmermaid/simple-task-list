@@ -1,7 +1,7 @@
 <template>
   <div>
     <li class="new-list">
-      👉 {{ message }}
+      👉 {{ todo }}
       <button class="button-remove" @click="$emit('remove')">Удалить</button>
     </li>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  props: ['message'],
+  props: ['todo'],
 };
 </script>
 

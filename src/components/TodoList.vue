@@ -1,14 +1,20 @@
 <template>
   <div class="container">
     <div class="list">
+      <h1
+        v-if="todos.length === 0"
+        class="list__title"
+        >
+        Список задач пуст...
+      </h1>
       <ul class="list__ul">
         <li
           class="list__li"
           is="todo-item"
           v-for="(todo, index) in todos"
-          :key="index.id"
-          :message="todo.message"
-          v-on:remove="removeElement(index)"
+          :key="index"
+          :todo="todo"
+          v-on:remove="removeTodo(index)"
         ></li>
       </ul>
     </div>
@@ -40,37 +46,36 @@ export default {
   },
   data() {
     return {
-      newTodoText: '',
+      newTodoText: null,
       min: 3,
       max: 30,
-      todos: [
-        {
-          id: 1,
-          message: 'Погулять с собакой',
-        },
-        {
-          id: 2,
-          message: 'Прочитать документацию Vue',
-        },
-        {
-          id: 3,
-          message: 'Написать ToDo список',
-        },
-      ],
-      nextTodoId: 4,
+      todos: [],
     };
   },
+  mounted() {
+    if(localStorage.getItem('todos')) {
+      try {
+        this.todos = JSON.parse(localStorage.getItem('todos'))
+      } catch (error) {
+        localStorage.removeItem(this.todos)
+      }
+    }
+  },
   methods: {
-    addNewTodo() {
-      this.todos.push({
-        id: this.nextTodoId++,
-        message: this.newTodoText,
-      });
-      this.newTodoText = '';
+    removeTodo(index) {
+      this.todos.splice(index, 1)
+      this.saveTodo();
     },
+    addNewTodo() {
+      if(!this.newTodoText) return;
 
-    removeElement(index) {
-      this.todos.splice(index, 1);
+      this.todos.push(this.newTodoText)
+      this.newTodoText = ''
+      this.saveTodo()
+    },
+    saveTodo() {
+      let parsed = JSON.stringify(this.todos)
+      localStorage.setItem('todos', parsed)
     },
   },
 };
@@ -84,7 +89,11 @@ export default {
 
 .list {
   margin-top: 50px;
-  margin-right: 100px;
+  margin-right: 50px;
+
+  &__title {
+    font-size: 24px;
+  }
 
   &__ul {
     list-style-type: none;
@@ -100,6 +109,9 @@ export default {
 }
 
 .form {
+  border-left: 1px solid #d3d3d3;
+  padding-left: 50px;
+
   &__label {
     display: block;
     font-size: 24px;
@@ -112,15 +124,15 @@ export default {
     font-size: 18px;
     display: block;
     width: 100%;
-    padding: 10px;
-    border: 1px solid rgb(211, 211, 211);
+    padding: 10px 20px;
+    border: 1px solid #d3d3d3;
     outline: none;
     appearance: none;
     border-radius: 50px;
     margin-bottom: 10px;
 
     &::placeholder {
-      color: rgb(184, 184, 184);
+      color: #b8b8b8;
     }
 
     &:focus {
@@ -133,7 +145,7 @@ export default {
     font-size: 18px;
     background-color: #42b983;
     color: #233241;
-    padding: 10px 0;
+    padding: 11px 0;
     border-style: none;
     cursor: pointer;
     box-sizing: border-box;
