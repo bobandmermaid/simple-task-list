@@ -1,10 +1,7 @@
 <template>
   <div class="container">
     <div class="list">
-      <h1
-        v-if="todos.length === 0"
-        class="list__title"
-        >
+      <h1 v-if="todos.length === 0" class="list__title">
         Список задач пуст...
       </h1>
       <ul class="list__ul">
@@ -53,29 +50,29 @@ export default {
     };
   },
   mounted() {
-    if(localStorage.getItem('todos')) {
+    if (localStorage.getItem('todos')) {
       try {
-        this.todos = JSON.parse(localStorage.getItem('todos'))
+        this.todos = JSON.parse(localStorage.getItem('todos'));
       } catch (error) {
-        localStorage.removeItem(this.todos)
+        localStorage.removeItem(this.todos);
       }
     }
   },
   methods: {
     removeTodo(index) {
-      this.todos.splice(index, 1)
+      this.todos.splice(index, 1);
       this.saveTodo();
     },
     addNewTodo() {
-      if(!this.newTodoText) return;
+      if (!this.newTodoText) return;
 
-      this.todos.push(this.newTodoText)
-      this.newTodoText = ''
-      this.saveTodo()
+      this.todos.push(this.newTodoText);
+      this.newTodoText = '';
+      this.saveTodo();
     },
     saveTodo() {
-      let parsed = JSON.stringify(this.todos)
-      localStorage.setItem('todos', parsed)
+      let parsed = JSON.stringify(this.todos);
+      localStorage.setItem('todos', parsed);
     },
   },
 };
