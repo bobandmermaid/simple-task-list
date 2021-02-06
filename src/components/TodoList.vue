@@ -93,6 +93,7 @@ export default {
 
   &__title {
     font-size: 24px;
+    font-weight: 200;
   }
 
   &__ul {
