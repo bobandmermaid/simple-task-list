@@ -1,10 +1,10 @@
 <template>
   <div class="container">
     <div class="list">
-      <h1 v-if="todos.length === 0" class="list__title">
+      <h1 class="list__title" v-if="todos.length === 0">
         Список задач пуст...
       </h1>
-      <ul class="list__ul">
+      <ul class="list__ul" v-else>
         <li
           class="list__li"
           is="todo-item"
