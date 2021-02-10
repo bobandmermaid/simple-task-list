@@ -10,7 +10,7 @@
 <script>
 export default {
   props: {
-    todo: String
+    todo: String,
   },
 };
 </script>
@@ -26,6 +26,7 @@ export default {
     align-items: baseline;
     font-family: Avenir, sans-serif;
     font-weight: 500;
+    cursor: pointer;
   }
 
   &:hover {
