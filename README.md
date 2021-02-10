@@ -1,14 +1,12 @@
 # Simple Task List
-`Vue`       
+`Vue`
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/bobandmermaid/simple-task-list?style=flat-square)
 
-![alt text](todo2.png)
+![alt text](todo3.jpg)
 
 ## Project setup
 ```
-npm install
-```
-
+npm insta
 ### Compiles and hot-reloads for development
 ```
 npm run serve
