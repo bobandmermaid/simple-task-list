@@ -1,46 +1,57 @@
 <template>
-  <div>
-    <li class="new-list">
+  <div class="new-list">
+    <li class="new-list__content">
       👉 {{ todo }}
-      <button class="button-remove" @click="$emit('remove')">Удалить</button>
+      <button class="button-remove" @click="$emit('remove')">&#10006;</button>
     </li>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['todo'],
+  props: {
+    todo: String
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .new-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  will-change: transform;
+  transition: transform 450ms;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: Avenir, sans-serif;
+    font-weight: 500;
+  }
+
+  &:hover {
+    transition: transform 150ms;
+    transform: translateX(10px);
+  }
 }
 
 .button-remove {
   font-size: 14px;
-  font-weight: 500;
-  background-color: #b94242;
-  color: #fff;
-  padding: 5px 10px;
+  font-family: Avenir, sans-serif;
+  background-color: transparent;
+  color: #c44444;
+  padding: 6px 10px;
   border-style: none;
   cursor: pointer;
   box-sizing: border-box;
   border-radius: 50px;
+  border: 1px solid #c44444;
   outline: none;
   align-items: flex-end;
-  margin-left: 10px;
+  margin-left: 15px;
 
   &.button-remove:hover {
-    background-color: #ec5555;
-    transition: 0.1s linear;
-  }
-
-  &.button-remove:active {
-    background-color: #b14040;
+    background-color: #b94242;
+    color: #fff;
     transition: 0.1s linear;
   }
 }

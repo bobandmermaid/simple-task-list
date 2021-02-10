@@ -11,7 +11,7 @@
           v-for="(todo, index) in todos"
           :key="index"
           :todo="todo"
-          v-on:remove="removeTodo(index)"
+          @remove="removeTodo(index)"
         ></li>
       </ul>
     </div>
@@ -102,7 +102,7 @@ export default {
   &__li {
     display: block;
     font-size: 18px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 }
 
@@ -123,7 +123,7 @@ export default {
     display: block;
     width: 100%;
     padding: 10px 20px;
-    border: 1px solid #d3d3d3;
+    border: 1px solid #dfdfdf;
     outline: none;
     appearance: none;
     border-radius: 50px;
@@ -139,10 +139,10 @@ export default {
   }
 
   &__button {
-    font-weight: 500;
+    font-family: Avenir, sans-serif;
     font-size: 18px;
     background-color: #42b983;
-    color: #233241;
+    color: #fff;
     padding: 11px 0;
     border-style: none;
     cursor: pointer;
@@ -154,11 +154,13 @@ export default {
 
   &__button:hover {
     background-color: #55eca8;
+    color: #233241;
     transition: 0.1s linear;
   }
 
   &__button:active {
     background-color: #40b17e;
+    color: #233241;
     transition: 0.1s linear;
   }
 }
