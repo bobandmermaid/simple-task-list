@@ -10,7 +10,7 @@
 `Vue CLI`
 
 ### Посмотреть
-+ https://github.com/bobandmermaid/simple-task-list
++ https://bobandmermaid.github.io/simple-task-list/
 
 ## Project setup
 
