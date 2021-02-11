@@ -6,8 +6,11 @@
 + Task list
 
 ### Стек
-`Vue`       
+`Vue`      
 `Vue CLI`
+
+### Посмотреть
++ https://github.com/bobandmermaid/simple-task-list
 
 ## Project setup
 
