@@ -66,7 +66,7 @@ export default {
     addNewTodo() {
       if (!this.newTodoText) return;
 
-      this.todos.push(this.newTodoText);
+      this.todos.unshift(this.newTodoText);
       this.newTodoText = '';
       this.saveTodo();
     },
