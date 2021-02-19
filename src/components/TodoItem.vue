@@ -2,16 +2,21 @@
   <div class="new-list">
     <li class="new-list__content">
       👉 {{ todo }}
-      <button class="button-remove" @click="$emit('remove')">&#10006;</button>
+      <button class="button-remove" @click="removeTodo">&#10006;</button>
     </li>
   </div>
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   props: {
     todo: String,
   },
+  methods: {
+    ...mapMutations(['removeTodo'])
+  }
 };
 </script>
 
