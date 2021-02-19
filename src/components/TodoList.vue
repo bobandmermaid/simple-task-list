@@ -11,11 +11,10 @@
           v-for="(todo, index) in todos"
           :key="index"
           :todo="todo"
-          @remove="removeTodo(index)"
         ></li>
       </ul>
     </div>
-    <form class="form" v-on:submit.prevent="addNewTodo">
+    <form class="form" @submit.prevent="submit">
       <label class="form__label" for="new-todo">Добавить задачу</label>
       <div class="form__input-content">
         <input
@@ -28,7 +27,7 @@
           placeholder="Например выучить JS"
           required
         />
-        <button class="form__button">Добавить</button>
+        <button type="submit" class="form__button">Добавить</button>
       </div>
     </form>
   </div>
@@ -36,6 +35,7 @@
 
 <script>
 import TodoItem from './TodoItem';
+import { mapMutations, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -46,33 +46,28 @@ export default {
       newTodoText: null,
       min: 3,
       max: 30,
-      todos: [],
     };
   },
-  mounted() {
-    if (localStorage.getItem('todos')) {
-      try {
-        this.todos = JSON.parse(localStorage.getItem('todos'));
-      } catch (error) {
-        localStorage.removeItem(this.todos);
-      }
-    }
+  // mounted() {
+  //   if (localStorage.getItem('todos')) {
+  //     try {
+  //       this.todos = JSON.parse(localStorage.getItem('todos'));
+  //     } catch (error) {
+  //       localStorage.removeItem(this.todos);
+  //     }
+  //   }
+  // },
+  computed: {
+    ...mapGetters(['todos'])
   },
   methods: {
-    removeTodo(index) {
-      this.todos.splice(index, 1);
-      this.saveTodo();
-    },
-    addNewTodo() {
-      if (!this.newTodoText) return;
+    ...mapMutations(['addNewTodo']),
 
-      this.todos.push(this.newTodoText);
+    submit() {
+      this.addNewTodo(
+        this.newTodoText
+      )
       this.newTodoText = '';
-      this.saveTodo();
-    },
-    saveTodo() {
-      let parsed = JSON.stringify(this.todos);
-      localStorage.setItem('todos', parsed);
     },
   },
 };
