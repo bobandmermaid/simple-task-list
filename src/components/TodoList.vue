@@ -10,6 +10,7 @@
           is="todo-item"
           v-for="(todo, index) in todos"
           :key="index"
+          :index="index"
           :todo="todo"
         ></li>
       </ul>
@@ -48,15 +49,6 @@ export default {
       max: 30,
     };
   },
-  // mounted() {
-  //   if (localStorage.getItem('todos')) {
-  //     try {
-  //       this.todos = JSON.parse(localStorage.getItem('todos'));
-  //     } catch (error) {
-  //       localStorage.removeItem(this.todos);
-  //     }
-  //   }
-  // },
   computed: {
     ...mapGetters(['todos'])
   },
@@ -145,18 +137,18 @@ export default {
     border-radius: 50px;
     outline: none;
     width: 100%;
-  }
 
-  &__button:hover {
+    &:hover {
     background-color: #55eca8;
     color: #233241;
     transition: 0.1s linear;
-  }
+    }
 
-  &__button:active {
-    background-color: #40b17e;
-    color: #233241;
-    transition: 0.1s linear;
+    &:active {
+      background-color: #40b17e;
+      color: #233241;
+      transition: 0.1s linear;
+    }
   }
 }
 </style>

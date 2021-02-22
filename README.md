@@ -6,8 +6,10 @@
 + Task list
 
 ### Стек
-`Vue`      
-`Vue CLI`
++ `Vue`
++ `Vue CLI`
++ `Vuex`
++ `vuex-persistedstate`
 
 ### Посмотреть
 + https://bobandmermaid.github.io/simple-task-list/

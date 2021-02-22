@@ -7,20 +7,14 @@ export default {
     addNewTodo(state, newTodo) {
       if (!newTodo) return;
 
-      state.todos.unshift(newTodo);
-      // this.saveTodo();
+      state.todos.push(newTodo);
     },
 
     removeTodo(state, index) {
       state.todos.splice(index, 1);
     },
-
-    // saveTodo(state) {
-    //   let parsed = JSON.stringify(state.todos);
-    //   localStorage.setItem('todos', parsed);
-    // },
   },
   getters: {
-    todos: (s) => s.todos
-  }
+    todos: s => s.todos
+  },
 }
