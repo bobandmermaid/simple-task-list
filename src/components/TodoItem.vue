@@ -2,7 +2,7 @@
   <div class="new-list">
     <li class="new-list__content">
       👉 {{ todo }}
-      <button class="button-remove" @click="removeTodo">&#10006;</button>
+      <button class="button-remove" @click="removeTodo(index)">&#10006;</button>
     </li>
   </div>
 </template>
@@ -13,6 +13,7 @@ import { mapMutations } from 'vuex';
 export default {
   props: {
     todo: String,
+    index: Number
   },
   methods: {
     ...mapMutations(['removeTodo'])
@@ -55,7 +56,7 @@ export default {
   align-items: flex-end;
   margin-left: 15px;
 
-  &.button-remove:hover {
+  &:hover {
     background-color: #b94242;
     color: #fff;
     transition: 0.1s linear;
