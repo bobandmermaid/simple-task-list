@@ -139,9 +139,9 @@ export default {
     width: 100%;
 
     &:hover {
-    background-color: #55eca8;
-    color: #233241;
-    transition: 0.1s linear;
+      background-color: #55eca8;
+      color: #233241;
+      transition: 0.1s linear;
     }
 
     &:active {

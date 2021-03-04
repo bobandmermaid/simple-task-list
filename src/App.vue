@@ -16,7 +16,6 @@ export default {
 </script>
 
 <style>
-@import url('https://rsms.me/inter/inter.css');
 
 #app {
   font-family: Avenir, sans-serif;
